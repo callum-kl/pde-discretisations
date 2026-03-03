@@ -38,6 +38,13 @@ i.e. it is also a conserved quantity. In fact, the above systems are both Hamilt
 
 Now consider the fully discretised system in time using the leapfrog integrator. Because $A$ is skew-symmetric, this is a symplectic integrator. Symplectic integrators "approximately" conserve energy; that is, the energy oscillates about its true value without drift.
 
+Concretely, Leapfrog integration conserves the energy of a perturbed Hamiltonian system (as per backwards error analysis):
+
+$$
+u^{n \pm 1} = u^n \pm \Delta t \dot{u^n} + \frac{{(\Delta t)}^2}{2} \ddot{u^n} \pm \frac{{(\Delta t)}^3}{6} \dddot{u^n} + \dots
+\implies \dot{u} = Au + \frac{{(\Delta t)}^2}{6} A^3{u^n} + O(\Delta t^4)
+$$
+
 Let $\mu=\frac{c\Delta t}{\Delta x}$.
 
 ```math
@@ -52,7 +59,6 @@ One can show that when $\mu = 1$, we have the exact preservation of the discrete
 $$\lVert u^{n+1} \rVert ^2_{2} = \lVert u^{n-1} \rVert ^2_{2}$$
 If the numerical scheme to determine our first step also respects this, then we have preservation of energy for all time. 
 
-
-In general, Leapfrog integration conserves the energy of a perturbed Hamiltonian system (as per backwards error analysis). When $\mu < 1$ we have oscillatory but bounded fluctuations in energy, and for $\mu > 1$, the CFL condition is violated and energy grows unboundedly.
+When $\mu < 1$ we have oscillatory but bounded fluctuations in energy, and for $\mu > 1$, the CFL condition is violated and energy grows unboundedly.
 
 The above also hints at an issue with Leapfrog integration in that it splits the grid into two independent alternating solutions that may drift apart in time. Schemes like the Asselin filter can couple them together using added artificial diffusion at the cost of violating energy conservation.
