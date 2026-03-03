@@ -9,11 +9,7 @@ $$
 Use the ansatz $u_k^n = A^n e^{i \xi k}$ where $\xi = \pi \Delta x$ and substitute:
 
 $$
-A^{n+1} e^{i \xi k}
-=
-A^{n-1} e^{i \xi k}
--
-c\left(A^n e^{i\xi(k+1)} - A^n e^{i\xi(k-1)}\right)
+A^{n+1} e^{i \xi k} = A^{n-1} e^{i \xi k} - c\left(A^n e^{i\xi(k+1)} - A^n e^{i\xi(k-1)}\right)
 $$
 
 Cancel $A^{n-1}e^{i\xi k}$:
@@ -41,11 +37,7 @@ $$
 Then the square root is real, and
 
 $$
-|A|^2
-=
-c^2\sin^2(\xi) + (1 - c^2\sin^2(\xi))
-=
-1.
+|A|^2 = c^2\sin^2(\xi) + (1 - c^2\sin^2(\xi)) = 1
 $$
 
 Hence $|A| = 1$ and the scheme is stable.
@@ -57,9 +49,7 @@ Hence $|A| = 1$ and the scheme is stable.
 For some $\xi$, we have $c^2\sin^2(\xi) > 1$, and the roots become
 
 $$
-A_\pm
-=
-i\left(-c\sin\xi \pm \sqrt{c^2\sin^2\xi - 1}\right).
+A_\pm = i\left(-c\sin\xi \pm \sqrt{c^2\sin^2\xi - 1}\right).
 $$
 
 Their product is
