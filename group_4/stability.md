@@ -1,49 +1,87 @@
 # Von Neumann Stability
 
-  
 Write the leapfrog scheme for the advection equation as
-$$
-
-\begin{align*}
-u_{k}^{n+1} &= u_{k}^{n-1} - c(u_{k+1}^n - u_{k-1}^n)
-\end{align*}
 
 $$
-Use the ansatz $u_{k}^n = A^ne^{i \xi k}$ with $\xi = \pi\Delta x$ and substitute into the above:
+u_{k}^{n+1} = u_{k}^{n-1} - c(u_{k+1}^n - u_{k-1}^n)
 $$
 
-\begin{align*}
-
-A^{n+1} e^{i \xi k} &= A^{n-1}e^{i\xi k} - c(A^n e^{i\xi(k+1)} - A^n e^{i`\xi (k-1)}) \\
-
-A^2 &= 1 - cA(e^{i\xi} - e^{i\xi}) \\
-
-A^2 + 2ic\sin(\xi)A -1 &= 0 \\
-
-\implies A &= \frac{-2ic\sin(\xi) \pm \sqrt{-4c^2\sin^2(\xi) + 4} }{2} \\
-
-A &= -ic\sin(\xi) \pm \sqrt{1- c^2 \sin^2(\xi)}
-
-\end{align*}
-$$
-
-In the case $\lvert c \rvert \leq1$, the square root is real and $|A| = c^2\sin^2(\xi) + 1 - c^2\sin^2(\xi) = 1$. Hence the solution is stable.
-In the case $|c| > 1$, then the roots are purely imaginary. Let $A_{+} = i\left(-c\sin(\xi) + \sqrt{ c^2 \sin^2(\xi) - 1 }\right)$ and $A_{+} = i\left(-c\sin(\xi) - \sqrt{ c^2 \sin^2(\xi) - 1 }\right)$, then
+Use the ansatz $u_k^n = A^n e^{i \xi k}$ where $\xi = \pi \Delta x$ and substitute:
 
 $$
-
-\begin{align*}
-
-A_{+}A_{-} &= - (c^2 \sin^2(\xi) - c^2\sin^2(\xi) - 1) = 1 \\
-
-&= 1 \\
-
-\implies |A_{+}||A_{-}| &= 1
-
-\end{align*}
-
+A^{n+1} e^{i \xi k}
+=
+A^{n-1} e^{i \xi k}
+-
+c\left(A^n e^{i\xi(k+1)} - A^n e^{i\xi(k-1)}\right)
 $$
 
-so either $|A_{+}| > 1$ or $|A_{-}| > 1$ in which case the solution is unstable.
+Cancel $A^{n-1}e^{i\xi k}$:
 
-In summary we require $|c| \leq 1$ for stability.
+$$
+A^2 = 1 - cA(e^{i\xi} - e^{-i\xi})
+$$
+
+Using $e^{i\xi} - e^{-i\xi} = 2i\sin\xi$:
+
+$$
+A^2 + 2ic\sin(\xi)A - 1 = 0
+$$
+
+Solving:
+
+$$
+A = -ic\sin(\xi) \pm \sqrt{1 - c^2\sin^2(\xi)}
+$$
+
+---
+
+## Case 1: $|c| \le 1$
+
+Then the square root is real, and
+
+$$
+|A|^2
+=
+c^2\sin^2(\xi) + (1 - c^2\sin^2(\xi))
+=
+1.
+$$
+
+Hence $|A| = 1$ and the scheme is stable.
+
+---
+
+## Case 2: $|c| > 1$
+
+For some $\xi$, we have $c^2\sin^2(\xi) > 1$, and the roots become
+
+$$
+A_\pm
+=
+i\left(-c\sin\xi \pm \sqrt{c^2\sin^2\xi - 1}\right).
+$$
+
+Their product is
+
+$$
+A_+ A_- = 1.
+$$
+
+Therefore
+
+$$
+|A_+||A_-| = 1.
+$$
+
+Since $|A_+| \ne |A_-|$, one must satisfy $|A|>1$.
+
+Thus the scheme is unstable.
+
+---
+
+## Stability condition
+
+$$
+|c| \le 1.
+$$
