@@ -8,11 +8,11 @@ $$\dot{u}=-\frac{c}{2\Delta x} (u_{n+1}-u_{n-1})=Au$$
 
 where $A$ is the circulant matrix:
 $$A=\begin{pmatrix}
-0 & -\frac{c}{2} & 0 & \dots & 0& \frac{c}{2} \\
-\frac{c}{2} & \ddots & \ddots & \ddots && 0 \\
-0 & \ddots & \ddots & \ddots& \ddots& \vdots \\
-\vdots  &\ddots &\ddots&\ddots&\ddots&0\\
-0&&\ddots&\ddots&\ddots& -\frac{c}{2} \\
+0 & -\frac{c}{2} & 0 & \dots & 0& \frac{c}{2} \\\
+\frac{c}{2} & \ddots & \ddots & \ddots && 0 \\\
+0 & \ddots & \ddots & \ddots& \ddots& \vdots \\\
+\vdots  &\ddots &\ddots&\ddots&\ddots&0\\\
+0&&\ddots&\ddots&\ddots& -\frac{c}{2} \\\
 -\frac{c}{2} & 0 & \dots & 0 & \frac{c}{2} & 0
 \end{pmatrix}$$
 
