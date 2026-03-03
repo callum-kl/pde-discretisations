@@ -40,11 +40,13 @@ Now consider the fully discretised system in time using the leapfrog integrator.
 
 Concretely, Leapfrog integration conserves the energy of a perturbed Hamiltonian system as per backwards error analysis:
 
-$$
-u^{n \pm 1} = u^n \pm \Delta t \dot{u^n} + \frac{{(\Delta t)}^2}{2} \ddot{u^n} \pm \frac{{(\Delta t)}^3}{6} \dddot{u^n} + \dots \\
-\frac{u^{n+1} - u^{n-1}}{2 \Delta t}  = \dot{u^n} + \frac{{(\Delta t)}^2}{6} \dddot{u^n} + O(\Delta t^4)\\
-\implies \dot{u} = Au + \frac{{(\Delta t)}^2}{6} A^3{u} + O(\Delta t^4)
-$$
+```math
+\begin{aligned}
+u^{n \pm 1} &= u^n \pm \Delta t \dot{u^n} + \frac{{(\Delta t)}^2}{2} \ddot{u^n} \pm \frac{{(\Delta t)}^3}{6} \dddot{u^n} + \dots \\
+\frac{u^{n+1} - u^{n-1}}{2 \Delta t}  &= \dot{u^n} + \frac{{(\Delta t)}^2}{6} \dddot{u^n} + O(\Delta t^4)\\
+\implies \dot{u} &= Au + \frac{{(\Delta t)}^2}{6} A^3{u} + O(\Delta t^4)
+\end{aligned}
+```
 
 We now consider the steps of the Leapfrog integration explicitly; let $\mu=\frac{c\Delta t}{\Delta x}$.
 
