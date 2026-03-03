@@ -1,8 +1,11 @@
 We can write the 1D Advection equation as:
-$\frac{\partial u}{\partial t} = -c \frac{\partial u}{\partial x}$
+$$\frac{\partial u}{\partial t} = -c \frac{\partial u}{\partial x}$$
+
 One can show that $\frac{1}{2} \int u^2 dx$ is conserved.
 Now consider the semi-discretised equation in space; i.e. a (finite dimensional) ODE in continuous time:
-$\dot{u}=-\frac{c}{2\Delta x} (u_{n+1}-u_{n-1})=Au$
+
+$$\dot{u}=-\frac{c}{2\Delta x} (u_{n+1}-u_{n-1})=Au$$
+
 where $A$ is the circulant matrix:
 $$A=\begin{pmatrix}
 0 & -\frac{c}{2} & 0 & \dots & 0& \frac{c}{2} \\
@@ -12,18 +15,23 @@ $$A=\begin{pmatrix}
 0&&\ddots&\ddots&\ddots& -\frac{c}{2} \\
 -\frac{c}{2} & 0 & \dots & 0 & \frac{c}{2} & 0
 \end{pmatrix}$$
-Note that $A$ is skew-symmetric, i.e.  it satisfies $A^T=-A$
+
+Note that $A$ is skew-symmetric, i.e.  it satisfies $A^T=-A$.
 We can consider the discrete $L^2$ norm:
-$\lVert u \rVert^2_{2}=\Delta x u^Tu$
-$\frac{d}{dt}\lVert u \rVert^2_{2}=2u^T \dot{u}=u^TAu-u^TA^Tu=0$
+$$\lVert u \rVert^2_{2}=\Delta x u^Tu$$
+$$\frac{d}{dt}\lVert u \rVert^2_{2}=2u^T \dot{u}=u^TAu-u^TA^Tu=0$$
 i.e. it is also a conserved quantity.
+
 Now consider the fully discretised system in time using the leapfrog integrator. Let $\mu=\frac{c\Delta t}{\Delta x}$.
+
 This preserves the symplectic structure above (as long as the CFL condition is satisfied):
 $$\begin{aligned}
 u^{n+1} - u^{n-1} &= -\mu Au^n \\
 (u^{n+1} + u^{n-1})^T(u^{n+1} - u^{n-1})&= -\mu(u^{n+1} + u^{n-1})^TAu^n \\
 \lVert u^{n+1} \rVert ^2_{2} - \lVert u^{n-1} \rVert ^2_{2} &= -\frac{c}{2} \mu(u^{n+1} + u^{n-1})^T(u^n_{k+1}-u^n_{k-1})=0
 \end{aligned}$$
+
 By telescoping terms from periodic boundary conditions. Thus:
-$\lVert u^{n+1} \rVert ^2_{2} = \lVert u^{n-1} \rVert ^2_{2}$
+$$\lVert u^{n+1} \rVert ^2_{2} = \lVert u^{n-1} \rVert ^2_{2}$$
+
 That is, the discrete 2-norm of our solution is preserved in time increments of $2 \Delta t$. If our first step also respects this, then we have preservation for all time. Empirically, we do not see this as we are using a Forward Euler scheme, and arithmetic is not exact.
