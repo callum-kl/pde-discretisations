@@ -9,7 +9,8 @@ $$
 Use the ansatz $u_k^n = A^n e^{i \xi k}$ where $\xi = \pi \Delta x$ and substitute:
 
 $$
-A^{n+1} e^{i \xi k} = A^{n-1} e^{i \xi k} - c\left(A^n e^{i\xi(k+1)} - A^n e^{i\xi(k-1)}\right)
+A^{n+1} e^{i \xi k} 
+= A^{n-1} e^{i \xi k} - c\left(A^n e^{i\xi(k+1)} - A^n e^{i\xi(k-1)}\right)
 $$
 
 Cancel $A^{n-1}e^{i\xi k}$:
