@@ -1,7 +1,7 @@
 We can write the 1D Advection equation as:
 $$\frac{\partial u}{\partial t} = -c \frac{\partial u}{\partial x}$$
 
-One can show that $\frac{1}{2} \int u^2 dx$ is conserved.
+One can show that $\frac{1}{2} \int u^2 dx$ is conserved with periodic boundary conditions.
 Now consider the semi-discretised equation in space; i.e. a (finite dimensional) ODE in continuous time:
 
 $$\dot{u}=-\frac{c}{2\Delta x} (u_{n+1}-u_{n-1})=Au$$
@@ -36,11 +36,15 @@ This preserves the symplectic structure above (as long as the CFL condition is s
 \begin{aligned}
 u^{n+1} - u^{n-1} &= -\mu Au^n \\
 (u^{n+1} + u^{n-1})^T(u^{n+1} - u^{n-1})&= -\mu(u^{n+1} + u^{n-1})^TAu^n \\
-\lVert u^{n+1} \rVert ^2_{2} - \lVert u^{n-1} \rVert ^2_{2} &= -\frac{c}{2} \mu(u^{n+1} + u^{n-1})^T(u^n_{k+1}-u^n_{k-1})=0
+\lVert u^{n+1} \rVert ^2_{2} - \lVert u^{n-1} \rVert ^2_{2} + \mu(u^{n+1} + u^{n-1})^TAu^n &= 0
 \end{aligned}
 ```
 
-By telescoping terms from periodic boundary conditions. Thus:
+One can show that when $\mu = 1$, we have the exact preservation of the discrete 2-norm of our solution in time increments of $2 \Delta t$.
 $$\lVert u^{n+1} \rVert ^2_{2} = \lVert u^{n-1} \rVert ^2_{2}$$
+If our first step also respects this, then we have preservation for all time. 
 
-That is, the discrete 2-norm of our solution is preserved in time increments of $2 \Delta t$. If our first step also respects this, then we have preservation for all time. Empirically, we do not see this as we are using a Forward Euler scheme, and arithmetic is not exact.
+
+However we note that Leapfrog integration conserves the energy of a perturbed system; when $\mu < 1$ we have oscillatory but bounded energy, and for $\mu > 1$, the energy grows unboundedly.
+
+

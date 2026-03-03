@@ -20,7 +20,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-c",
         "--Courant",
-        default=1.0,
+        default=1.1,
     )
     parser.add_argument(
         "-a",
@@ -82,4 +82,5 @@ if __name__ == "__main__":
 
     plt.close(fig)
     plt.plot(norms)
+    plt.title(r"$c=$" + str(c))
     plt.show()
