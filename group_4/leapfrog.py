@@ -30,7 +30,8 @@ ax.set_ylabel("u")
 
 writer = PillowWriter(fps=30)
 
-norms = [np.linalg.norm(un_0), np.linalg.norm(un_1)]
+norms = [np.linalg.norm(un_0), np.linalg.norm(un_1)] #for Von Neumann Stability condition check
+
 with writer.saving(fig, "pde-discretisations/group_4/visual/leapfrog.gif", dpi=100):
     # write initial frame
     ax.set_title(f"Leapfrog at t={t:.2f}")
@@ -41,7 +42,7 @@ with writer.saving(fig, "pde-discretisations/group_4/visual/leapfrog.gif", dpi=1
         un_2 = un_0 - c * (np.roll(un_1, -1) - np.roll(un_1, 1))
         un_0 = un_1
         un_1 = un_2
-        norms.append(np.linalg.norm(un_2))
+        norms.append(np.linalg.norm(un_2)) #for Von Neumann Stability condition check
 
         # update plot
         line.set_ydata(un_1)
