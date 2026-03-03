@@ -21,8 +21,11 @@ A=\begin{pmatrix}
 
 Note that $A$ is skew-symmetric, i.e.  it satisfies $A^T=-A$.
 We can consider the discrete $L^2$ norm:
+
 $$\lVert u \rVert^2_{2}=\Delta x u^Tu$$
+
 $$\frac{d}{dt}\lVert u \rVert^2_{2}=2u^T \dot{u}=u^TAu-u^TA^Tu=0$$
+
 i.e. it is also a conserved quantity.
 
 Now consider the fully discretised system in time using the leapfrog integrator. Let $\mu=\frac{c\Delta t}{\Delta x}$.
