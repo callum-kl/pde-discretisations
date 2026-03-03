@@ -81,6 +81,5 @@ if __name__ == "__main__":
             writer.grab_frame()
 
     plt.close(fig)
-
     plt.plot(norms)
     plt.show()

@@ -16,7 +16,6 @@ def norm_A(k, c, dx):
 def arg_A(k, c, dx):
     A_num = A(k, c, dx)
     A_exact = np.exp(-1j * c * phi(k, dx))
-    print(A_exact)
     return np.angle(A_num / A_exact)
 
 def diffusion_error(c, dx, k):
@@ -70,4 +69,4 @@ ax2.set_xlabel(r"$\phi$")
 sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
 sm.set_array([])
 fig.colorbar(sm, cax=cax, label="Courant number $c$")
-plt.show()
+plt.savefig("./group_4/visual/leapfrog_error.png", dpi=300)
