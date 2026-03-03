@@ -28,11 +28,14 @@ i.e. it is also a conserved quantity.
 Now consider the fully discretised system in time using the leapfrog integrator. Let $\mu=\frac{c\Delta t}{\Delta x}$.
 
 This preserves the symplectic structure above (as long as the CFL condition is satisfied):
-$$\begin{aligned}
+
+```math
+\begin{aligned}
 u^{n+1} - u^{n-1} &= -\mu Au^n \\
 (u^{n+1} + u^{n-1})^T(u^{n+1} - u^{n-1})&= -\mu(u^{n+1} + u^{n-1})^TAu^n \\
 \lVert u^{n+1} \rVert ^2_{2} - \lVert u^{n-1} \rVert ^2_{2} &= -\frac{c}{2} \mu(u^{n+1} + u^{n-1})^T(u^n_{k+1}-u^n_{k-1})=0
-\end{aligned}$$
+\end{aligned}
+```
 
 By telescoping terms from periodic boundary conditions. Thus:
 $$\lVert u^{n+1} \rVert ^2_{2} = \lVert u^{n-1} \rVert ^2_{2}$$
